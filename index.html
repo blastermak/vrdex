@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<title>VRDex</title>
+		<script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
+		<script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+		<script src="assets/js/jquery-3.1.1.min.js"> </script>
+		<script src="assets/js/main.js"> </script>
+	</head>
+	
+	
+	<body>
+		<!-- alles hieronder wordt vr -->
+		<a-scene>
+			<a-camera look-controls>
+				<a-cursor color="white" fuse="true" timeout="1"></a-cursor>
+			</a-camera>
+			<a-assets>
+				<img id="arrow" src="assets/img/arrow.png">
+				<img id="sky" src="assets/img/sky.jpg">
+				<img id="ok" src="assets/img/ok.png">
+			</a-assets>
+			
+			<a-sky src="#sky"></a-sky>
+			
+			
+			<a-image src="#arrow" class="arrowUpOnes" position="1 0.5 -5" scale="0.5 0.5 0"></a-image>
+			<a-image src="#arrow" class="arrowUpTens" position="0 0.5 -5" scale="0.5 0.5 0"></a-image>
+			<a-image src="#arrow" class="arrowUpHundreds" position="-1 0.5 -5" scale="0.5 0.5 0"></a-image>
+			
+			<a-image src="#arrow" class="arrowDownOnes" position="1 -0.5 -5" scale="0.5 0.5 0" rotation="0 0 180"></a-image>
+			<a-image src="#arrow" class="arrowDownTens" position="0 -0.5 -5" scale="0.5 0.5 0" rotation="0 0 180">></a-image>
+			<a-image src="#arrow" class="arrowDownHundreds" position="-1 -0.5 -5" scale="0.5 0.5 0" rotation="0 0 180">></a-image>
+			
+			<a-entity id="textHundreds" mixin="font" bmfont-text="text: 0; color:black;" position="-1 0 -5"></a-entity>
+			<a-entity id="textTens" mixin="font" bmfont-text="text: 0; color:black;" position="0 0 -5"></a-entity>
+			<a-entity id="textOnes" mixin="font" bmfont-text="text: 1; color:black;" position="1 0 -5"></a-entity>
+			
+			<a-image src="#ok" id="okButton" position="2.5 0 -5"></a-image>
+			
+			<a-image src='assets/img/placeholder.gif' id="pokeImgEntity" position="1 2 -5" > </a-image>
+			
+			<a-entity id="typeText" mixin="font" bmfont-text="text: Type:; color:black;" position="-3 1.5 -5"></a-entity>
+			<a-entity id="nameText" mixin="font" bmfont-text="text: Name:; color:black;" position="-3 2 -5"></a-entity>
+			
+		</a-scene>
+	
+	
+	</body>
+</html>
