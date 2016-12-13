@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$(".arrowUpOnes").on("click", function(){
+	document.querySelector(".arrowUpOnes").addEventListener("mouseenter", function() {
 		var textHolder = $("#textOnes").attr("bmfont-text");
 		if (parseInt(textHolder.text) == 9){
 			var number = 1;
@@ -8,7 +8,7 @@ $(document).ready(function() {
 		}
 		$("#textOnes").attr("bmfont-text","color: black; text: " + number + ";");
 	});
-	$(".arrowUpTens").on("click", function(){
+	document.querySelector(".arrowUpTens").addEventListener("mouseenter", function() {
 		var textHolder = $("#textTens").attr("bmfont-text");
 		if (parseInt(textHolder.text) == 5){
 			var number = 0;
@@ -17,7 +17,7 @@ $(document).ready(function() {
 		}
 		$("#textTens").attr("bmfont-text","color: black; text: " + number + ";");
 	});
-	$(".arrowUpHundreds").on("click", function(){
+	document.querySelector(".arrowUpHundreds").addEventListener("mouseenter", function() {
 		var textHolder = $("#textHundreds").attr("bmfont-text");
 		if (parseInt(textHolder.text) == 1){
 			var number = 0;
@@ -27,7 +27,7 @@ $(document).ready(function() {
 		$("#textHundreds").attr("bmfont-text","color: black; text: " + number + ";");
 	});
 	
-	$(".arrowDownOnes").on("click", function(){
+	document.querySelector(".arrowDownOnes").addEventListener("mouseenter", function() {
 		var textHolder = $("#textOnes").attr("bmfont-text");
 		if (parseInt(textHolder.text) == 0){
 			var number = 9;
@@ -36,7 +36,7 @@ $(document).ready(function() {
 		}
 		$("#textOnes").attr("bmfont-text","color: black; text: " + number + ";");
 	});
-	$(".arrowDownTens").on("click", function(){
+	document.querySelector(".arrowDownTens").addEventListener("mouseenter", function() {
 		var textHolder = $("#textTens").attr("bmfont-text");
 		if (parseInt(textHolder.text) == 0){
 			var number = 5;
@@ -45,7 +45,7 @@ $(document).ready(function() {
 		}
 		$("#textTens").attr("bmfont-text","color: black; text: " + number + ";");
 	});
-	$(".arrowDownHundreds").on("click", function(){
+	document.querySelector(".arrowDownHundreds").addEventListener("mouseenter", function() {
 		var textHolder = $("#textHundreds").attr("bmfont-text");
 		if (parseInt(textHolder.text) == 0){
 			var number = 1;
@@ -55,14 +55,21 @@ $(document).ready(function() {
 		$("#textHundreds").attr("bmfont-text","color: black; text: " + number + ";");
 	});
 	
-	$("#okButton").on("click", function(){
+	document.querySelector("#okButton").addEventListener("mouseenter", function() {
 		var textOnes = $("#textOnes").attr("bmfont-text").text;
 		var textTens = $("#textTens").attr("bmfont-text").text;
 		var textHundreds = $("#textHundreds").attr("bmfont-text").text;
 		
 		var number = textHundreds + textTens + textOnes;
+		$("#loadingGif").attr("visible", true);
 		getData(number);
+		
 	});
+	
+	
+	
+	
+	
 });
 
 function hoofdLetterGebruik(string){
@@ -75,7 +82,9 @@ function getData(dataString){
 		method: 'GET',
 		dataType: "json",
 		success: function(msg) {
+			console.log(msg['sprites']['front_default']);
 			$("#pokeImgEntity").attr('src', msg['sprites']['front_default']);
+			
 			
 			
 			$("#nameText").attr('bmfont-text', "text: Name: " + hoofdLetterGebruik(msg['name']) + "; color:black;");
@@ -85,6 +94,11 @@ function getData(dataString){
 			} else {
 				$("#typeText").attr('bmfont-text', "text: Type: " + hoofdLetterGebruik(types[0]['type']['name']) + "; color:black;");
 			}
+			setTimeout(function(){
+				$("#loadingGif").attr("visible", false);
+			},500);
 		}
+		
 	});
+	
 }

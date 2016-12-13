@@ -2,6 +2,8 @@
 	<head>
 		<title>VRDex</title>
 		<script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
+		<script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+		<script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
 		<script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
 		<script src="assets/js/jquery-3.1.1.min.js"> </script>
 		<script src="assets/js/main.js"> </script>
@@ -22,6 +24,7 @@
 			
 			<a-sky src="#sky"></a-sky>
 			
+			<a-entity id="loadingGif" visible="false" position = ".6 1.8 -3" geometry="primitive:box; depth:0; width:.7; height:.7;" material="shader:gif;src:url(assets/img/loading.gif);" gif=""></a-entity>
 			
 			<a-image src="#arrow" class="arrowUpOnes" position="1 0.5 -5" scale="0.5 0.5 0"></a-image>
 			<a-image src="#arrow" class="arrowUpTens" position="0 0.5 -5" scale="0.5 0.5 0"></a-image>
